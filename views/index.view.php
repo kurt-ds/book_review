@@ -7,5 +7,10 @@
 </head>
 <body>
     <h3>Landing Page</h3>
+    <ul>
+        <li><a href="/books.php">Books</a></li>
+        <li><a href="/login.php">Login</a></li>
+        <li><a href="/signup.php">Signup</a></li>
+    </ul>
 </body>
 </html>
