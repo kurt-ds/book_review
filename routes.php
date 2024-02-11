@@ -4,10 +4,7 @@ return [
     '/' => function() {
         require 'controllers/index.php';
     },
-    '/test' => function() {
-        echo "Test";
-    },
-    '/books' => function() {
+    '/books' => function(array $params = []) {
         require 'controllers/books.php';
     },
     '/login' => function() {
