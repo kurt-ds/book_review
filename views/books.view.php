@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Books</title>
-</head>
-<body>
-    <h3>All Books</h3>
+<?php require 'partials/head.php' ?>
     <ul>
         <li><a href="views/book.view.php'">Single Book</a></li>
     </ul>
-</body>
-</html>
+
+<?php require 'partials/footer.php' ?>
