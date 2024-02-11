@@ -8,5 +8,6 @@
 <body>
     <h1>Title</h1>
     <p>Synopsis</p>
+    <?php var_dump($params) ?>
 </body>
 </html>
