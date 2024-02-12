@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Single Book</title>
-</head>
-<body>
-    <h1>Title</h1>
-    <p>Synopsis</p>
-    <?php var_dump($params) ?>
-</body>
-</html>
+<?php require 'partials/head.php' ?>
+    <h1> Title:  <?php echo htmlspecialchars($book['title']) ?></h1>
+    <p> ISBN: <?php echo htmlspecialchars($book['isbn']) ?> </p>
+    <img src="/public/thumbnail.jpg" alt="Book Thumbnail Image">
+    <p> Author:  <?php echo htmlspecialchars($book['author']) ?> </p>
+    <p> Publisher: <?php echo htmlspecialchars($book['publisher']) ?> </p>
+    <p> Publish Year: <?php echo htmlspecialchars($book['publish_year']) ?> </p>
+    <p> Synopsis:  <?php echo htmlspecialchars($book['synopsis']) ?> </p>
+
+
+<?php require 'partials/footer.php' ?>

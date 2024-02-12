@@ -17,7 +17,15 @@ function run(string $url, array $routes): void
 {
     $uri = parse_url("$url");
     $path = $uri['path'];
-    if (false === array_key_exists($path, $routes)) {
+
+    $path_array = explode('/', $path);
+    $path = '/' . $path_array[1];
+    $id = 0;
+    if (count($path_array) === 3) {
+        $id = $path_array[2];
+    }
+    
+    if (false === array_key_exists($path, $routes) || count($path_array) > 3) {
         http_response_code(404);
         echo "404-NOT FOUND";
         return;
@@ -28,6 +36,6 @@ function run(string $url, array $routes): void
     if (!empty($uri['query'])){
         parse_str($uri['query'], $params);
     }
-
+    $params['book_id'] = $id;
     $callback($params);
 }

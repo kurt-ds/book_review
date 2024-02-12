@@ -1,19 +1,23 @@
 <?php
 
 return [
-  '/' => function() {
-      require 'controllers/index.php';
-  },
   '/books' => function(array $params = []) {
-      require 'controllers/books.php';
+      if ($params['book_id'] === 0) {
+        require 'controllers/books.php';
+      } else {
+        require 'controllers/book.php';
+      }
   },
-  '/login' => function() {
+  '/books/new' => function(array $params = []) {
+    require 'controllers/book_form.php';
+  },
+  '/login' => function(array $params = []) {
       require 'controllers/login.php';
   },
-  '/signup' => function() {
+  '/signup' => function(array $params = []) {
       require 'controllers/signup.php';
   },
-  '/seed' => function() { 
+  '/seed' => function(array $params = []) { 
     //THIS ROUTE WILL ADD 10 RANDOMLY GENERATED BOOKS TO THE DATABASE
     require 'seeds/seedsHelper.php';
 },
