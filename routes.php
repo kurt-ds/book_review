@@ -5,7 +5,11 @@ return [
       if ($params['book_id'] === 0) {
         require 'controllers/books.php';
       } else {
-        require 'controllers/book.php';
+        if ($params['path2'] === 'edit') {
+          require 'controllers/book_edit.php';
+        } else {
+          require 'controllers/book.php';
+        }
       }
   },
   '/books/new' => function(array $params = []) {

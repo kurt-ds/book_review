@@ -107,7 +107,11 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     if ($errors) {
-        header('Location: /books/new');
+        $_SESSION["errors_signup"] = $errors;
+
+        $_SESSION["signup_data"] = $data;
+
+        header("Location: /books/new");
         die();
     }
 
