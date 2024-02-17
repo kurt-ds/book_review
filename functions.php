@@ -19,6 +19,7 @@ function run(string $url, array $routes): void
     $path = $uri['path'];
     $path_array = explode('/', $path);
 
+    $regex_bookID_reviewID_edit = '/\/books\/\d+\/reviews\/\d+\/edit/';
     $regex_bookID_reviewID = "/\/books\/\d+\/reviews\/\d+/";
     $regex_bookID_review = "/\/books\/\d+\/reviews/";
     $regex_bookID_edit = "/\/books\/\d+\/edit/";
@@ -27,18 +28,16 @@ function run(string $url, array $routes): void
     $reviewID = 0;
     $path2 = '';
 
-    if (preg_match($regex_bookID_reviewID, $path, $matches) && count($path_array) === 5) {
+    if ((preg_match($regex_bookID_reviewID, $path, $matches) && count($path_array) === 6)) {
         $path = '/' . $path_array[1];
         $bookID = $path_array[2];
         $reviewID = $path_array[4];
-        print_r($matches);
-        echo "<br>";
-        echo("SHOWING /books/:id/reviews/:id URL");
-        echo "<br>";
-        echo "BOOK ID:" . $bookID;
-        echo "<br>";
-        echo "REVIEW ID: " . $reviewID;
-        die();
+        $path2 = 'reviews_edit';
+    } else if (preg_match($regex_bookID_reviewID, $path, $matches) && count($path_array) === 5) {
+        $path = '/' . $path_array[1];
+        $bookID = $path_array[2];
+        $reviewID = $path_array[4];
+        $path2 = $path_array[3];
     } else if ((preg_match($regex_bookID_review, $path, $matches) && count($path_array) === 4)) {
         $path = '/' . $path_array[1];
         $bookID = $path_array[2];
@@ -65,6 +64,7 @@ function run(string $url, array $routes): void
         parse_str($uri['query'], $params);
     }
     $params['book_id'] = $bookID;
+    $params['review_id'] = $reviewID;
     $params['path2'] = $path2;
     $callback($params);
 }

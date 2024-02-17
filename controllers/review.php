@@ -3,7 +3,11 @@
 declare(strict_types=1);
 
 require_once "./model/reviews_model.php";
-$book_id = $params['book_id'];
+require_once "./model/books_model.php";
+
+
+$bookID = $params['book_id'];
+$reviewID = $params['review_id'];
 
 function is_input_empty(array $data): bool {
     forEach ($data as $key => $value) {
@@ -38,17 +42,44 @@ function is_rating_number(array $data): bool {
     }
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    $book = get_book_by_id($pdo, $bookID);
+    $review = get_review_by_id($pdo, $reviewID);
+
+    if (!$book || !$review) {
+        http_response_code(404);
+        echo "Something went wrong! <br>";
+        echo "Book ID or REVIEW ID is not found!";
+    } else {
+        $heading = "EDITING REVIEW TO";
+        require 'views/review_edit.php';
+    }
+} else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['_method'] === 'delete') {
+    $review = get_review_by_id($pdo, $reviewID);
+    delete_review_by_id($pdo, $review);
+    echo "THE REVIEW WTIH ID OF " . $review['review_id'] . " has been deleted!!!";
+} else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['_method'] === 'put') {
+    $book = get_book_by_id($pdo, $bookID);
+    $review = get_review_by_id($pdo, $reviewID);
+    if (!$book || !$review) {
+        http_response_code(404);
+        echo "Something went wrong! <br>";
+        echo "Book ID or REVIEW ID is not found!";
+        die();
+    }
+
     $userID = $_POST['user_id'];
     $rating = $_POST['rating'];
     $review_text = $_POST['review_text'];
 
     $data = [
-        'bookID' => $book_id,
+        'reviewID' => "" . $review['review_id'],
+        'bookID' => $bookID,
         'userID' => $userID,
         'rating' => $rating,
-        'review_text' => $review_text
+        'review_text' => $review_text,
     ];
+
 
 
     //ERROR HANDLERS
@@ -57,10 +88,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if(is_input_empty($data)) {
         $errors["empty_input"] = "Fill in all fields!";
     }
+    $data['reviewID'] = intval($data['reviewID']);
     if(!is_bookID_number($data)) {
         $errors['invalid_bookID'] = "bookID should be a number!";
     }
-    $data['bookID'] = intval($book_id);
+    $data['bookID'] = intval($bookID);
     if(!is_userID_number($data)) {
         $errors['invalid_userID'] = "userID should be a number!";
     }
@@ -74,6 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
 
+
     if ($errors) {
         $_SESSION["errors_signup"] = $errors;
 
@@ -83,12 +116,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die();
     }
     //Uploading Review
-    set_review($pdo, $data);
+    update_review($pdo, $data);
 
     
     header("Location: /books/{$data['bookID']}");
     die();
 
-} else {
-    echo "HTTP REQUEST METHOD NOT FOUND!";
 }
