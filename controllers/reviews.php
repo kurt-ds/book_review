@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo "Rating: " . $rating;
     echo "Review Text" . $review_text;
 
-    
+
 } else {
     echo "HTTP REQUEST METHOD NOT FOUND!";
 }
