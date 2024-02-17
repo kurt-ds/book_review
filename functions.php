@@ -42,12 +42,7 @@ function run(string $url, array $routes): void
     } else if ((preg_match($regex_bookID_review, $path, $matches) && count($path_array) === 4)) {
         $path = '/' . $path_array[1];
         $bookID = $path_array[2];
-        print_r($matches);
-        echo "<br>";
-        echo("SHOWING /books/:id/reviews/:id URL");
-        echo "<br>";
-        echo "BOOK ID:" . $bookID;
-        die();
+        $path2 = 'reviews';
     } else if ((preg_match($regex_bookID_edit, $path, $matches) && count($path_array) === 4)) {
         $path = '/' . $path_array[1];
         $bookID = $path_array[2];

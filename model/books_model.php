@@ -67,6 +67,17 @@ function update_book(object $pdo, array $data) {
     $stmt->execute();
 }
 
+function get_reviews_of_book_by_id(object $pdo, $isbn) {
+    $query = "SELECT * FROM reviews WHERE book_id = :isbn";
+    $stmt = $pdo->prepare($query);
+
+    $stmt->bindParam(":isbn", $isbn);
+    $stmt->execute();
+    
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+}
+
 
 function delete_book_by_id(object $pdo, array $data) {
     $query = "DELETE FROM books WHERE isbn = :isbn";
@@ -75,4 +86,15 @@ function delete_book_by_id(object $pdo, array $data) {
     $stmt->bindParam(":isbn", $data['isbn']);
 
     $stmt->execute();
+}
+
+function get_review_owner_by_id(object $pdo, $user_id) {
+    $query = "SELECT * FROM users WHERE user_id = :user_id;";
+    $stmt = $pdo->prepare($query);
+
+    $stmt->bindParam(":user_id", $user_id);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result;
 }

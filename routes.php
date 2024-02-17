@@ -7,7 +7,9 @@ return [
       } else {
         if ($params['path2'] === 'edit') {
           require 'controllers/book_edit.php';
-        } else {
+        } else if ($params['path2'] === 'reviews') {
+          require 'controllers/reviews.php';
+        }else {
           require 'controllers/book.php';
         }
       }

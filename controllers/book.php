@@ -55,12 +55,14 @@ function is_userid_available($pdo, $data) {
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     $book = get_book_by_id($pdo, $book_id);
+    $reviews = get_reviews_of_book_by_id($pdo, $book_id);
 
     if (!$book) {
         http_response_code(404);
         echo "Something went wrong! <br>";
         echo "Book ID is not found!";
     } else {
+
         require 'views/book.view.php';
     }
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['_method'] === 'put') {
