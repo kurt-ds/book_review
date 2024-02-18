@@ -3,7 +3,7 @@
 $host = "localhost";
 $dbname = "book_review"; //Subject to change depending on the database
 $dbusername = "root";
-$dbpassword = '';
+$dbpassword = "";
 
 
 try {

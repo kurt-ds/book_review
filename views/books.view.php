@@ -1,25 +1,29 @@
 <?php require 'partials/head.php' ?>
+<?php require 'partials/header.php' ?>
 
 <?php if (isset($_GET['signup']) && $_GET['signup'] === 'success') echo '<script> alert("SIGNUP SUCCESSFUL!") </script>'; ?>
 <?php if (isset($_GET['login']) && $_GET['login'] === 'success') echo '<script> alert("LOGIN SUCCESSFUL!") </script>'; ?>
-    <p>Welcome <?php echo ucfirst($_SESSION['user_username'] ?? 'guest') ?> !</p>
-    <ul>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/signup">Signup</a></li>
-        <li><form action="/logout" method='post'><button type='submit'>Logout</button></form></li>
-    </ul>
-    <ul>
-    <?php
-        foreach ($result as $book) { ?>
-        <img src="./public/thumbnail.jpg" alt="book thumbnail image">
-        <li>Title: " <?php echo htmlspecialchars($book["title"]); ?></li>
-        <li>Author: " <?php echo  htmlspecialchars($book["author"]); ?></li> 
-        <li>ISBN: " <?php echo htmlspecialchars($book["isbn"]); ?></li>  
-        <a href="/books/<?php echo htmlspecialchars($book["isbn"]); ?>">CHECK BOOK</a>
-        <br>
-    <?php } ?>
 
-    <a href="/books/new">Create New Book</a>
-    </ul>
+<main class="books">
+    <div class="container">
+        <div class="books-heading">
+            <h1 class="books-heading__text">All books</h1>
+            <a class="books-heading__create" href="/books/new">Create NEW BOOK</a>
+        </div>
+        <div class="books-grid">
+            <?php
+                foreach ($result as $book) { ?>
+                <a class="books-item" href="/books/<?php echo htmlspecialchars($book["isbn"]); ?>">
+                    <img class="books-item__image" src="./public/thumbnail.jpg" alt="book thumbnail image">
+                    <h3 class="books-item__heading">Title: " <?php echo htmlspecialchars($book["title"]); ?></h3>
+                    <h4 class="books-item__author">Author: " <?php echo  htmlspecialchars($book["author"]); ?></h4> 
+                    <p class="books-item__paragraph">ISBN: " <?php echo htmlspecialchars($book["isbn"]); ?></p>  
+                </a>
+            <?php } ?>
+        </div>
+    </div>
+</main>
+    <div>
+    </div>
 
 <?php require 'partials/footer.php' ?>
