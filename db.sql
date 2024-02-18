@@ -19,7 +19,7 @@ CREATE TABLE books (
     publisher VARCHAR (50) NOT NULL,
     publish_year YEAR NOT NULL,
     synopsis TEXT NOT NULL,
-    thumbnail MEDIUMBLOB NOT NULL,
+    thumbnail MEDIUMBLOB,
     user_id INT(11),
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIME,
     PRIMARY KEY (isbn),

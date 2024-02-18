@@ -87,6 +87,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     //POSTING
     create_user($pdo, $data);
 
+    $result = get_user($pdo, $username);
+
+    $newSessionID = session_create_id();
+    $sessionID = $newSessionID . "_" . $result['user_id'];
+    session_id($sessionID);
+
+    $_SESSION['user_id'] = $result['user_id'];
+    $_SESSION['user_username'] = htmlspecialchars($result['username']);
+    $_SESSION['last_regeneration'] = time();
+
     header('Location: /books?signup=success');
 
     $pdo = null;
