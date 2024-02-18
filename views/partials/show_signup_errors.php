@@ -14,3 +14,18 @@ function check_signup_errors() {
         unset($_SESSION['errors_signup']);
     }
 }
+
+function check_login_errors() {
+    if (isset($_SESSION['errors_login'])) {
+        $errors = $_SESSION['errors_login'];
+
+        echo "<br>";
+
+        foreach ($errors as $error) {
+            echo '<p>'. $error .  '</p>';
+            echo "<br>";
+        }
+
+        unset($_SESSION['errors_login']);
+    }
+}

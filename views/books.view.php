@@ -1,10 +1,12 @@
 <?php require 'partials/head.php' ?>
 
 <?php if (isset($_GET['signup']) && $_GET['signup'] === 'success') echo '<script> alert("SIGNUP SUCCESSFUL!") </script>'; ?>
-    <p>Welcome <?php echo ucfirst($params['name'] ?? 'guest') ?> !</p>
+<?php if (isset($_GET['login']) && $_GET['login'] === 'success') echo '<script> alert("LOGIN SUCCESSFUL!") </script>'; ?>
+    <p>Welcome <?php echo ucfirst($_SESSION['user_username'] ?? 'guest') ?> !</p>
     <ul>
         <li><a href="/login">Login</a></li>
         <li><a href="/signup">Signup</a></li>
+        <li><form action="/logout" method='post'><button type='submit'>Logout</button></form></li>
     </ul>
     <ul>
     <?php

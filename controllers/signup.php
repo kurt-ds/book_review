@@ -76,16 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $errors['invalid_password'] = "Password length is invalid!";
     }
 
-    echo "Username: " . $username;
-    echo '<br>';
-    echo "First name: " . $firstname;
-    echo '<br>';
-    echo "Last name: " . $lastname;
-    echo '<br>';
-    echo "Password: " . $pwd;
-    echo '<br>';
-    echo "Email: " . $email;
-    echo "<br>";
+
 
     if ($errors) {
         $_SESSION['errors_signup'] = $errors;

@@ -32,6 +32,9 @@ return [
   '/signup' => function(array $params = []) {
       require 'controllers/signup.php';
   },
+  '/logout' => function(array $params = []) {
+    require 'controllers/logout.php';
+  },
   '/seed' => function(array $params = []) { 
     //THIS ROUTE WILL ADD 10 RANDOMLY GENERATED BOOKS TO THE DATABASE
     require 'seeds/seedsHelper.php';
