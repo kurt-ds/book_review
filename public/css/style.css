@@ -76,3 +76,134 @@ h6 {
   margin: 0 auto;
   padding: 0 20px;
 }
+
+.header-wrapper {
+  padding: 2.25rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px var(--primary-color) solid;
+}
+
+.header-nav__list {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-nav__link {
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.25rem;
+  color: var(--primary-color);
+  padding: 0.75rem 1.5rem;
+}
+
+.header-nav__link.--primary {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border-radius: 5px;
+}
+
+.header-nav__link.--secondary {
+  background-color: var(--neutral-color);
+  color: var(--white-color);
+  border-radius: 5px;
+}
+
+.header-nav__welcome {
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--primary-color);
+  padding: 2rem 0;
+  color: var(--white-color);
+  text-align: center;
+  font-weight: 700;
+  border-top-left-radius: 5rem;
+  border-top-right-radius: 5rem;
+}
+
+/* Landing page */
+.landing-page {
+  min-height: 80vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.landing-page__heading {
+  font-size: 4.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.landing-page__paragraph {
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+/* Books page */
+.books {
+  margin: 4rem 0;
+}
+
+.books-heading {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  color: var(--secondary-color);
+  font-size: 1.5rem;
+  align-items: center;
+}
+
+.books-heading__create {
+  color: var(--white-color);
+  background-color: var(--primary-color);
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.books-item {
+  width: 100%;
+  text-decoration: none;
+}
+
+.books-item__image {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.books-item__heading {
+  color: var(--neutral-color);
+}
+
+.books-item__author {
+  color: var(--neutral-color);
+  font-weight: 400;
+}
+
+.books-item__paragraph {
+  color: var(--neutral-color);
+}

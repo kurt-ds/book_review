@@ -1,13 +1,11 @@
 <?php require 'partials/head.php' ?>
-<?php if (isset($_GET['logout']) && $_GET['logout'] === 'success') echo '<script> alert("LOGOUT SUCCESSFUL!") </script>'; ?>
+<?php require 'partials/header.php' ?>
 
-
-<p>This is the landing page</p>
-
-<a href="/books">BOOKS</a>
-<br>
-<a href="/login">LOGIN</a>
-<br>
-<a href="/signup">SIGN UP</a>
+<main class="landing-page">
+  <div class="container">
+    <h1 class="landing-page__heading">Welcome bookworms!</h1>
+    <p class="landing-page__paragraph">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex ut dolores exercitationem consectetur dignissimos, saepe esse labore modi dolorum! Accusamus voluptates perferendis facere cum! Quos corrupti voluptatibus consequatur, nemo molestiae tempore recusandae quia, porro temporibus error quibusdam et deserunt earum aut cumque quo debitis fuga officia? Obcaecati voluptatibus pariatur aliquid?</p>
+  </div>
+</main>
 
 <?php require 'partials/footer.php' ?>
