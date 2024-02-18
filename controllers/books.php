@@ -53,6 +53,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $heading = "All Books";
     $result = getAllBooks($pdo);
     require 'views/books.view.php';
+    $pdo = null;
+    $stmt = null;
 }
 else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //Collection of Data
@@ -118,6 +120,7 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //Inserting data into the database
     set_book($pdo, $data);
 
-
+    $pdo = null;
+    $stmt = null;
     echo "Data has been submitted!";
 } 

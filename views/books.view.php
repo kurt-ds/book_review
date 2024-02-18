@@ -1,4 +1,6 @@
 <?php require 'partials/head.php' ?>
+
+<?php if (isset($_GET['signup']) && $_GET['signup'] === 'success') echo '<script> alert("SIGNUP SUCCESSFUL!") </script>'; ?>
     <p>Welcome <?php echo ucfirst($params['name'] ?? 'guest') ?> !</p>
     <ul>
         <li><a href="/login">Login</a></li>

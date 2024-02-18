@@ -64,6 +64,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     } else {
 
         require 'views/book.view.php';
+        $pdo = null;
+        $stmt = null;
     }
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['_method'] === 'put') {
     //Gathering data
@@ -129,12 +131,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 
     header("Location: /books/{$data['isbn']}");
+    $pdo = null;
+    $stmt = null;
     die();
 
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['_method'] === 'delete') {
     $result = get_book_by_id($pdo, $book_id);
     delete_book_by_id($pdo, $result);
     echo "THE BOOK ENTITLED " . $result['title'] . " has been deleted!!!";
+    $pdo = null;
+    $stmt = null;
 }
 
 
