@@ -9,9 +9,9 @@
       </a>
       <nav class="header-nav">
         <ul class="header-nav__list">
-          <li><a href="books" class="header-nav__link">Books</a></li>
+          <li><a href="/books" class="header-nav__link">Books</a></li>
           <?php if ($loggedIn) { ?>
-            <li><a href="logout" class="header-nav__link --primary">Logout</a></li>
+            <li><a href="/logout" class="header-nav__link --primary">Logout</a></li>
           <?php } else { ?>
             <li><a href="login" class="header-nav__link --primary">Login</a></li>
           <?php } ?>
