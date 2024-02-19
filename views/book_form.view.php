@@ -1,8 +1,11 @@
 <?php require 'partials/head.php' ?>
-    <h3>Create Books</h3>
-    <form action="/books" method='post'>
-        <label for="isbn">ISBN</label>
-        <input type="number" name='isbn'>
+<?php require 'partials/header.php' ?>
+
+<main class="book-new">
+    <div class="container">
+    <h1 class="book-new__heading">Create Books</h1>
+    <form class="book-new__form" action="/books" method='post'>
+        <input type="number" name='isbn' placeholder="ISBN">
         <br>
         <input type="text" name='title' placeholder="Title: ">
         <br>
@@ -17,6 +20,8 @@
         <input type="number" name="user_id" placeholder="Uploaded by: ">
         <br>
         <!-- THUMBNAIL ARE MISSING -->
-        <button type="submit" >Submit</button>
-    </form>
+        <button class="book-new__submit" type="submit" >Submit</button>
+    </form>        
+    </div>
+</main>
 <?php require 'partials/footer.php' ?>

@@ -207,3 +207,204 @@ h6 {
 .books-item__paragraph {
   color: var(--neutral-color);
 }
+
+/* Create Book Page */
+.book-new {
+  margin: 4rem 0;
+  max-width: 1024px;
+  margin-inline: auto;
+  width: 100%;
+}
+
+.book-new .container {
+  max-width: 768px;
+  width: 100%;
+}
+
+.book-new__heading {
+  font-size: 3.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.book-new__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.book-new__form input,
+.book-new__form textarea {
+  padding: 0.875rem 1rem;
+  width: 100%;
+  border: 2px solid var(--primary-color);
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.book-new__submit {
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  padding: 1.25rem 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  border: none;
+}
+
+/* Book Content */
+.book-content {
+  margin: 4rem 0;
+  max-width: 1024px;
+  margin-inline: auto;
+}
+
+.book-content__intro {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  gap: 1.5rem;
+}
+
+.book-content__title {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.book-content__image {
+  width: 100%;
+}
+
+.book-content__rating-wrapper {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.book-content__rating-title {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.book-content__rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.book-content__rating-text {
+  padding: 1rem 1rem;
+  font-size: 1.25rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 0.5rem;
+}
+
+.book-content__rating-submit {
+  background-color: var(--primary-color);
+  border: none;
+  color: var(--white-color);
+  padding: 1rem 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border-radius: 0.5rem;
+}
+
+.book-content__rating input {
+  display: none;
+}
+
+.book-content__rating label {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  margin: 0 2px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+}
+
+.book-content__rating label:before {
+  content: "\2605";
+  display: block;
+  text-align: center;
+  font-size: 1.5em;
+  line-height: 25px;
+  color: #fff;
+}
+
+.book-content__rating input:checked ~ label,
+.book-content__rating input:checked ~ label ~ label {
+  background-color: #f8d71e;
+}
+
+.book-content__details {
+  font-size: 1.25rem;
+}
+
+.book-content__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+/* Book review */
+
+.book-review {
+  margin-top: 3.5rem;
+}
+
+.book-review__heading {
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.book-review__title,
+.book-review__message,
+.book-review__user {
+  font-size: 1rem;
+}
+
+.book-review__item {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: start;
+}
+
+.book-review__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.book-review__modifier {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.book-review__delete {
+  appearance: none;
+  border: none;
+  background-color: #d80032;
+  color: var(--white-color);
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+
+.book-review__edit {
+  appearance: none;
+  border: none;
+  background-color: #527853;
+  color: var(--white-color);
+  font-size: 1rem;
+  padding: 0.5rem;
+  text-decoration: none;
+}
