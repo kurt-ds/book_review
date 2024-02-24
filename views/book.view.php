@@ -36,7 +36,6 @@
             <input type="hidden" name='user_id' id='user_id' value="<?php echo $_SESSION['user_id']?>">
             <br>
             <button class="book-content__rating-submit" type='submit'>Submit</button>
-            <!-- USER ID IS MISSING GOING TO BE RAND FOR NOW -->
         </form>
         <?php require 'partials/showReviews.php' ?>
     </div>

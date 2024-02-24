@@ -140,7 +140,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['_method'] === 'delete') {
     $result = get_book_by_id($pdo, $book_id);
     delete_book_by_id($pdo, $result);
-    echo "THE BOOK ENTITLED " . $result['title'] . " has been deleted!!!";
+    header("Location: /books");
     $pdo = null;
     $stmt = null;
 }

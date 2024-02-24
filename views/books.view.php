@@ -19,6 +19,8 @@
                     <h4 class="books-item__author">Author: " <?php echo  htmlspecialchars($book["author"]); ?></h4> 
                     <p class="books-item__paragraph">ISBN: " <?php echo htmlspecialchars($book["isbn"]); ?></p>  
                 </a>
+
+                
             <?php } ?>
         </div>
     </div>
