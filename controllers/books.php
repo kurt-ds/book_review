@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once "./model/books_model.php";
+require_once "./model/users_model.php";
 
 function is_input_empty($data): bool {
     forEach ($data as $key => $value) {
@@ -42,7 +43,7 @@ function is_publish_year_number($data) {
     }
 }
 function is_userid_available($pdo, $data) {
-    if (get_user_by_id($pdo, $data)) {
+    if (get_user_by_id($pdo, $data['user_id'])) {
         return true;
     } else {
         return false;
@@ -99,7 +100,6 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $synopsis = $_POST['synopsis'];
     $user_id = $_POST['user_id'];
 
-    
     //Compiling Data into single array
     $data = [
         'isbn' => $isbn,

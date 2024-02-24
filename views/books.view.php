@@ -15,7 +15,6 @@
                 foreach ($result as $book) { ?>
                     <a class="books-item" href="/books/<?php echo htmlspecialchars($book["isbn"]); ?>">
                     <img class="books-item__image" src="/<?php echo htmlspecialchars($book["thumbnail"]); ?>" alt="book thumbnail image">
-                    <?php echo htmlspecialchars($book["thumbnail"]); ?>
                     <h3 class="books-item__heading">Title: " <?php echo htmlspecialchars($book["title"]); ?></h3>
                     <h4 class="books-item__author">Author: " <?php echo  htmlspecialchars($book["author"]); ?></h4> 
                     <p class="books-item__paragraph">ISBN: " <?php echo htmlspecialchars($book["isbn"]); ?></p>  

@@ -61,7 +61,7 @@ function get_user_by_id(object $pdo, int $user_id) {
     $query = "SELECT * FROM users WHERE user_id = :user_id;";
     $stmt = $pdo->prepare($query);
 
-    $stmt->bindParam(":user_id", $user_d);
+    $stmt->bindParam(":user_id", $user_id);
 
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);

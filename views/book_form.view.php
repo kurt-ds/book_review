@@ -2,6 +2,8 @@
 <?php require 'partials/header.php' ?>
 <?php require 'partials/show_signup_errors.php' ?>
 
+
+
 <main class="book-new">
     <div class="container">
     <h1 class="book-new__heading">Create Books</h1>
