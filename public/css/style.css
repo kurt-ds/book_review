@@ -478,7 +478,7 @@ h6 {
   display: flex;
   justify-content: center; 
   align-items: center;
-  height: 50vh;
+  height: 75vh;
   
 }
 .sign-up_container {
@@ -499,7 +499,7 @@ h3 {
 }
 
 .sign-up_inputs input {
-  padding: 10px;
+  padding: 15px;
   border: 1px solid #ccc;
   border-radius: 40px;
   font-size: 14px;
@@ -513,7 +513,7 @@ h3 {
 .sign-up_button {
   background-color: var(--primary-color);
   color: #fff;
-  padding: 10px;
+  padding: 15px;
   border: none;
   border-radius: 40px;
   cursor: pointer;
