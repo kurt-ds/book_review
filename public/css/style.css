@@ -471,3 +471,68 @@ h6 {
   font-size: small;
   font-weight:500;
 }
+
+/*Sign-Up*/
+
+.sign-up_page{
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  height: 100vh;
+  
+}
+.sign-up_container {
+  text-align: left;
+  padding: 15rem;
+}
+
+h3 {
+  margin-bottom: 20px;
+  color: #A9845C;
+  font-size: 2rem;
+}
+
+.sign-up_inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sign-up_inputs input {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 40px;
+  font-size: 14px;
+}
+
+.sign-up_inputs .sign-up-name_inputs {
+  display: flex;
+  gap: 10px;
+}
+
+.sign-up_button {
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 15px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  font-size: 1.17;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.sign-up_button:hover {
+  background-color: #85736fc5;
+}
+
+p{
+  text-align: center;
+  font-size: small;
+}
+.login-link {
+  margin-top: 10px;
+  font-size: small;
+  color: var(--primary-color);
+  text-decoration: none;
+}
