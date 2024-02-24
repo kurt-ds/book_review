@@ -1,5 +1,6 @@
 <?php
 
+
 return [
   '/' => function (array $params = []) {
     require 'controllers/index.php';

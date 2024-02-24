@@ -4,9 +4,10 @@
 <main class="book-content">
     <div class="container">
         <div class="book-content__intro">
-            <img class="book-content__image" src="/public/thumbnail.jpg" alt="Book Thumbnail Image">
+            <img class="book-content__image" src="/<?php echo htmlspecialchars($book['thumbnail']) ?>" alt="Book Thumbnail Image">
             <div class="book-content__details">
                 <h1 class="book-content__title"> <strong>Title:</strong> <?php echo htmlspecialchars($book['title']) ?></h1>
+                <p> <strong>Thumbnail:</strong> <?php echo htmlspecialchars($book['thumbnail']) ?> </p>
                 <p> <strong>ISBN:</strong> <?php echo htmlspecialchars($book['isbn']) ?> </p>
                 <p> <strong>Author:</strong>  <?php echo htmlspecialchars($book['author']) ?> </p>
                 <p> <strong>Publisher:</strong> <?php echo htmlspecialchars($book['publisher']) ?> </p>

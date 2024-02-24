@@ -158,10 +158,19 @@ function randomBook() {
             $rand_keys = array_rand($items,1);
             $title = $quote[$rand_quote] ." ". $items[$rand_keys];
 
+    $images = array(
+        "uploads/65da2ae039c567.77762943.jpg",
+        "uploads/sample2.jpg",
+        "uploads/sample2.jpg",
+        "uploads/sample3.jpg",
+        "uploads/sample4.jpg"
+    );
+
     $isbn = rand(1, 100000);
     $firstName = $firstname[rand ( 0 , count($firstname) -1)];
     $lastName = $lastname[rand ( 0 , count($lastname) -1)];
     $user_id = rand(1,5);
+    $thumbnail = $images[array_rand($images, 1)];
     $result = [
         'isbn' => $isbn,
         'author' => $firstName . " " . $lastName,
@@ -169,13 +178,14 @@ function randomBook() {
         'publisher' => "OMF Literature Inc.",
         'synopsis' => '    Lorem ipsum dolor sit amet consectetur adipisicing elit. At laudantium aut ut quisquam eaque animi id, aspernatur nemo quos, autem ipsa, consequatur dolorum dolore quas laborum voluptatum ad? Debitis ex fugit laboriosam ad officiis voluptatibus provident necessitatibus perferendis fuga culpa cupiditate modi alias iure hic, repellendus iusto recusandae natus repudiandae!',
         'publish_year' => 1969,
+        'thumbnail' => $thumbnail,
         'user_id' => $user_id,
     ];
     return $result;
 }
 
 function set_book(object $pdo, array $obj) {
-    $query = "INSERT INTO books (isbn, author, title, publisher, publish_year, synopsis, user_id) VALUES (:isbn, :author, :title, :publisher, :publish_year, :synopsis, :user_id);";
+    $query = "INSERT INTO books (isbn, author, title, publisher, publish_year, synopsis, thumbnail, user_id) VALUES (:isbn, :author, :title, :publisher, :publish_year, :synopsis, :thumbnail, :user_id);";
     $stmt = $pdo->prepare($query);
 
     $stmt->bindParam(":isbn", $obj['isbn']);
@@ -184,6 +194,7 @@ function set_book(object $pdo, array $obj) {
     $stmt->bindParam(":publisher", $obj['publisher']);
     $stmt->bindParam(":publish_year", $obj['publish_year']);
     $stmt->bindParam(":synopsis", $obj['synopsis']);
+    $stmt->bindParam(":thumbnail", $obj['thumbnail']);
     $stmt->bindParam(":user_id", $obj['user_id']);
 
     $stmt->execute();

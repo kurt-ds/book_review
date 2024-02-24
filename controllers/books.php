@@ -57,6 +57,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $stmt = null;
 }
 else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $errors = [];
+    //Managing the image
+    $thumbnail = '';
+    $file = $_FILES['file'];
+    $fileName = $_FILES['file']['name'];
+    $fileTmpName = $_FILES['file']['tmp_name'];
+    $fileSize = $_FILES['file']['size'];
+    $fileError = $_FILES['file']['error'];
+    $fileType = $_FILES['file']['type'];
+
+    $fileExt = explode('.', $fileName);
+    $fileActualExt = strtolower(end($fileExt));
+    $allowed = array('jpg', 'png', 'jpeg');
+
+    if (in_array($fileActualExt, $allowed)) {
+        if($fileError === 0) {
+            if ($fileSize < 1000000) {
+                $fileNameNew = uniqid('', true) . "." . $fileActualExt;
+                $fileDestination = 'uploads/' . $fileNameNew;
+                $thumbnail = $fileDestination;
+                move_uploaded_file($fileTmpName, $fileDestination);
+            } else {
+                $errors['file_too_big'] = 'File is too big!';
+            }   
+        } else {
+            $errors['unexpected_error'] = 'There was a problem in uploading the file!';
+        }
+    } else {
+        $errors['invalid_file_type'] = 'Invalid File Type!';
+    }
+
+
+
     //Collection of Data
     $isbn = $_POST['isbn'];
     $title = $_POST['title'];
@@ -66,6 +99,7 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $synopsis = $_POST['synopsis'];
     $user_id = $_POST['user_id'];
 
+    
     //Compiling Data into single array
     $data = [
         'isbn' => $isbn,
@@ -74,11 +108,11 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'publisher' => $publisher,
         'publish_year' => $publish_year,
         'synopsis' => $synopsis,
-        'user_id' => $user_id
+        'user_id' => $user_id,
+        'thumbnail' => $thumbnail
     ];
 
     //Error Handlers
-    $errors = [];
 
     if (is_input_empty($data)) {
         $errors["empty_input"] = "Fill in all fields!";
@@ -109,10 +143,10 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     if ($errors) {
-        $_SESSION["errors_signup"] = $errors;
+        $_SESSION["errors"] = $errors;
 
         $_SESSION["signup_data"] = $data;
-
+    
         header("Location: /books/new");
         die();
     }
@@ -122,5 +156,7 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $pdo = null;
     $stmt = null;
-    echo "Data has been submitted!";
+
+    header("Location: /books");
+    die();
 } 

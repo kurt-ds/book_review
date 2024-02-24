@@ -5,7 +5,7 @@ declare(strict_types=1);
 require_once './includes/dbh.inc.php';
 
 function getAllBooks(object $pdo) {
-    $query = "SELECT title, author, isbn FROM books";
+    $query = "SELECT * FROM books";
     $stmt = $pdo->prepare($query);
 
     $stmt->execute();
@@ -14,16 +14,6 @@ function getAllBooks(object $pdo) {
     return $result;
 }
 
-function get_user_by_id(object $pdo, array $data) {
-    $query = "SELECT * FROM users WHERE user_id = :user_id;";
-    $stmt = $pdo->prepare($query);
-
-    $stmt->bindParam(":user_id", $data['user_id']);
-    $stmt->execute();
-
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    return $result;
-}
 
 function get_book_by_id($pdo, $isbn) {
     $query = "SELECT * FROM books WHERE isbn = :isbn;";
@@ -37,7 +27,7 @@ function get_book_by_id($pdo, $isbn) {
 }
 
 function set_book(object $pdo, array $data) {
-    $query = "INSERT INTO books (isbn, author, title, publisher, publish_year, synopsis, user_id) VALUES (:isbn, :author, :title, :publisher, :publish_year, :synopsis, :user_id);";
+    $query = "INSERT INTO books (isbn, author, title, publisher, publish_year, synopsis, thumbnail, user_id) VALUES (:isbn, :author, :title, :publisher, :publish_year, :synopsis, :thumbnail, :user_id);";
     $stmt = $pdo->prepare($query);
 
     $stmt->bindParam(":isbn", $data['isbn']);
@@ -46,6 +36,7 @@ function set_book(object $pdo, array $data) {
     $stmt->bindParam(":publisher", $data['publisher']);
     $stmt->bindParam(":publish_year", $data['publish_year']);
     $stmt->bindParam(":synopsis", $data['synopsis']);
+    $stmt->bindParam(":thumbnail", $data['thumbnail']);
     $stmt->bindParam(":user_id", $data['user_id']);
 
     $stmt->execute();

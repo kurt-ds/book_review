@@ -3,6 +3,8 @@
 declare(strict_types=1);
 
 require_once "./model/books_model.php";
+require_once "./model/users_model.php";
+
 $heading = "Single Books";
 $book_id = $params['book_id'];
 
@@ -62,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         echo "Something went wrong! <br>";
         echo "Book ID is not found!";
     } else {
-
+        $user_uploader = get_user_by_id($pdo, $book['user_id']);
         require 'views/book.view.php';
         $pdo = null;
         $stmt = null;
