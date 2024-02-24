@@ -408,3 +408,66 @@ h6 {
   padding: 0.5rem;
   text-decoration: none;
 }
+
+/* Log In */
+
+.log-in__container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 95vh;
+}
+
+.log-in__wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 30rem;
+  width: 50rem;
+  border-radius: 40px;
+  background-color: #E4D2BA;
+  box-shadow: 0 2px 5px;
+}
+
+.log-in__input-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 60px;
+  width: 450px;
+  border-radius: 40px;
+}
+
+#log-in__textbox{
+  height: 45px;   
+  width: 100%;
+  outline: none;
+  border:1px solid;
+  border-color: var(--primary-color);
+  border-radius: 40px;
+  text-align: center;
+  background: transparent;
+  box-shadow: 0 2px 5px var(--secondary-color);
+}
+
+.log-in__btn{
+  height: 45px;   
+  width: 100%;
+  outline: none;
+  border: none;
+  border-radius: 40px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  background: var(--primary-color);
+  box-shadow: 0 2px 5px var(--secondary-color);
+}
+
+.signup__txt{
+  color: var(--secondary-color);
+  font-size: small;
+  font-weight:500;
+}
