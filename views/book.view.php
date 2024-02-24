@@ -7,7 +7,6 @@
             <img class="book-content__image" src="/<?php echo htmlspecialchars($book['thumbnail']) ?>" alt="Book Thumbnail Image">
             <div class="book-content__details">
                 <h1 class="book-content__title"> <strong>Title:</strong> <?php echo htmlspecialchars($book['title']) ?></h1>
-                <p> <strong>Thumbnail:</strong> <?php echo htmlspecialchars($book['thumbnail']) ?> </p>
                 <p> <strong>ISBN:</strong> <?php echo htmlspecialchars($book['isbn']) ?> </p>
                 <p> <strong>Author:</strong>  <?php echo htmlspecialchars($book['author']) ?> </p>
                 <p> <strong>Publisher:</strong> <?php echo htmlspecialchars($book['publisher']) ?> </p>
@@ -34,7 +33,7 @@
                 </div>
             </div>
             <textarea class="book-content__rating-text" name="review_text" id="review_text" cols="30" rows="10" placeholder="Review Text"></textarea>
-            <input type="hidden" name='user_id' id='user_id' value=<?php echo rand(1,5) ?>>
+            <input type="hidden" name='user_id' id='user_id' value="<?php echo $_SESSION['user_id']?>">
             <br>
             <button class="book-content__rating-submit" type='submit'>Submit</button>
             <!-- USER ID IS MISSING GOING TO BE RAND FOR NOW -->

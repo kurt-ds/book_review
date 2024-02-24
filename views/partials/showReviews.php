@@ -12,15 +12,19 @@
                     <p class="book-review__message"> <strong>Message:</strong> <?php echo $review['review_text'] ?> </p>
                     <p class="book-review__user"> <strong>User:</strong> <?php echo $reviewer['username']; ?></p>
                 </div>
-                <div class="book-review__modifier">
-                <form class="book-review__form" action="/books/<?php echo htmlspecialchars($book['isbn'])?>/reviews/<?php echo htmlspecialchars($review['review_id'])?>" method='post'>
-                    <input type="hidden" name="_method" value="delete" />
-                    <button class="book-review__delete" type='submit' >DELETE</button>
-                </form>
-                <a class="book-review__edit" href="/books/<?php echo htmlspecialchars($book['isbn'])?>/reviews/<?php echo htmlspecialchars($review['review_id'])?>/edit">EDIT</a>
+                <?php if (isAuthorized(htmlspecialchars($review['user_id']))) { ?>
+                    <div class="book-review__modifier">
+                    <form class="book-review__form" action="/books/<?php echo htmlspecialchars($book['isbn'])?>/reviews/<?php echo htmlspecialchars($review['review_id'])?>" method='post'>
+                        <input type="hidden" name="_method" value="delete" />
+                        <button class="book-review__delete" type='submit' >DELETE</button>
+                    </form>
+                    <a class="book-review__edit" href="/books/<?php echo htmlspecialchars($book['isbn'])?>/reviews/<?php echo htmlspecialchars($review['review_id'])?>/edit">EDIT</a>
+                    </div
                 </div>
-            </div>
+            <?php }?>
             <?php } ?>
         </div>
     </div>
 <?php } ?>
+
+

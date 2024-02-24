@@ -1,6 +1,14 @@
 <?php
-
 declare(strict_types=1);
+
+function isAuthorized(int $user_id) {
+    if ($_SESSION['user_id'] === $user_id) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 
 function dd($value) {
     echo "<pre>";
