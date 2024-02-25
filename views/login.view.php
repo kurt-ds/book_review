@@ -1,4 +1,5 @@
 <?php require 'partials/head.php' ?>
+<?php require 'partials/header.php' ?>
 <?php require 'partials/show_signup_errors.php'?>
 
 <div class="log-in__container">
