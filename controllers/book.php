@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once "./model/books_model.php";
+require_once "./model/reviews_model.php";
 require_once "./model/users_model.php";
 
 $heading = "Single Books";
@@ -139,6 +140,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['_method'] === 'delete') {
     $result = get_book_by_id($pdo, $book_id);
+    delete_review_by_bookID($pdo, $result);
     delete_book_by_id($pdo, $result);
     header("Location: /books");
     $pdo = null;

@@ -14,6 +14,12 @@
                 <p> <strong>Synopsis:</strong>  <?php echo htmlspecialchars($book['synopsis']) ?> </p>
             </div>
         </div>
+
+        <!-- DELETE AND EDIT LINKS -->
+        <form action="/books/<?php echo htmlspecialchars($book['isbn']) ?>" method="post">
+            <input type="hidden" name='_method' value="delete">
+            <button type='submit'>Delete</button>
+        </form>
         
         <!-- Star Rating Input -->
         <form class="book-content__form" action="/books/<?php echo htmlspecialchars($book['isbn'])?>/reviews" method="post">

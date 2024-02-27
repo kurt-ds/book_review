@@ -38,6 +38,15 @@ function delete_review_by_id(object $pdo, array $data) {
     $stmt->execute();
 }
 
+function delete_review_by_bookID(object $pdo, array $data) {
+    $query = "DELETE FROM reviews WHERE book_id = :book_id";
+    $stmt = $pdo->prepare($query);
+
+    $stmt->bindParam(":book_id", $data['isbn']);
+
+    $stmt->execute();
+}
+
 function update_review(object $pdo, array $data) {
     $query = "UPDATE reviews SET rating = :rating, review_text = :review_text WHERE review_id = :review_id;";
     $stmt = $pdo->prepare($query);
