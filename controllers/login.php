@@ -1,7 +1,6 @@
 <?php
 
 
-require_once './model/users_model.php';
 $heading = "Login";
 
 function is_input_empty($username, $pwd) {
@@ -33,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $username = $_POST['username'];
     $pwd = $_POST['pwd'];
     try {
+        require_once './model/users_model.php';
         //Error handlers
         $errors = [];
         if (is_input_empty($username, $pwd)) {
