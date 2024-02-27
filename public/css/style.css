@@ -192,6 +192,8 @@ h6 {
 
 .books-item__image {
   width: 100%;
+  height: 350px;
+  object-fit: cover;
   margin-bottom: 1rem;
 }
 
@@ -260,9 +262,15 @@ h6 {
   margin-inline: auto;
 }
 
+.book-content__details {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+
 .book-content__intro {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: start;
   gap: 1.5rem;
 }
@@ -274,6 +282,8 @@ h6 {
 
 .book-content__image {
   width: 100%;
+  height: 350px;
+  object-fit: cover;
 }
 
 .book-content__rating-wrapper {
@@ -411,14 +421,14 @@ h6 {
 
 /* Log In */
 
-.log-in__container{
+.log-in__container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 95vh;
 }
 
-.log-in__wrapper{
+.log-in__wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -426,11 +436,11 @@ h6 {
   height: 30rem;
   width: 50rem;
   border-radius: 40px;
-  background-color: #E4D2BA;
+  background-color: #e4d2ba;
   box-shadow: 0 2px 5px;
 }
 
-.log-in__input-box{
+.log-in__input-box {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -440,11 +450,11 @@ h6 {
   border-radius: 40px;
 }
 
-#log-in__textbox{
-  height: 45px;   
+#log-in__textbox {
+  height: 45px;
   width: 100%;
   outline: none;
-  border:1px solid;
+  border: 1px solid;
   border-color: var(--primary-color);
   border-radius: 40px;
   text-align: center;
@@ -452,8 +462,8 @@ h6 {
   box-shadow: 0 2px 5px var(--secondary-color);
 }
 
-.log-in__btn{
-  height: 45px;   
+.log-in__btn {
+  height: 45px;
   width: 100%;
   outline: none;
   border: none;
@@ -466,29 +476,28 @@ h6 {
   box-shadow: 0 2px 5px var(--secondary-color);
 }
 
-.signup__txt{
+.signup__txt {
   color: var(--secondary-color);
   font-size: small;
-  font-weight:500;
+  font-weight: 500;
 }
 
 /*Sign-Up*/
 
-.sign-up_page{
+.sign-up_page {
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
   height: 75vh;
-  
 }
 .sign-up_container {
   text-align: left;
   padding: 10rem;
 }
 
-h3 {
+.sign-up_page h3 {
   margin-bottom: 20px;
-  color: #A9845C;
+  color: #a9845c;
   font-size: 2rem;
 }
 
@@ -526,11 +535,12 @@ h3 {
   background-color: #85736fc5;
 }
 
-p{
+.sign-up_page p {
   text-align: center;
   margin-top: 5px;
   font-size: small;
 }
+
 .login-link {
   margin-top: 10px;
   font-size: small;
