@@ -2,10 +2,10 @@
 
 <h3>Edit book data</h3>
 
-<form action="/books/<?php echo htmlspecialchars($book['isbn']); ?>" method='post'>
+<form action="/books/<?php echo htmlspecialchars($book['isbn']); ?>" method='post' enctype='multipart/form-data'>
         <input type="hidden" name="_method" value="put" />
-        <label for="isbn">ISBN</label>
-        <input type="number" name='isbn' value="<?php echo $book['isbn']; ?>">
+        <label for="isbn">ISBN: <?php echo $book['isbn']; ?></label>
+        <input type="hidden" name='isbn' value="<?php echo $book['isbn']; ?>">
         <br>
         <input type="text" name='title' placeholder="Title: " value="<?php echo htmlspecialchars($book['title']); ?>">
         <br>
@@ -17,7 +17,8 @@
         <br>
         <textarea name="synopsis" id="synopsis" cols="30" rows="10" placeholder="Synopsis: "> <?php echo htmlspecialchars($book['synopsis']); ?> </textarea>
         <br>
-        <input type="number" name="user_id" placeholder="Uploaded by: " value='<?php echo htmlspecialchars($book['user_id']); ?>'>
+        <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']?>">
+        <input type="file" name='file' id='file'>
         <br>
         <!-- THUMBNAIL ARE MISSING -->
         <button type="submit" >UPDATE</button>

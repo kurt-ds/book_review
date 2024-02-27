@@ -47,7 +47,7 @@ function is_publish_year_number($data) {
     }
 }
 function is_userid_available($pdo, $data) {
-    if (get_user_by_id($pdo, $data)) {
+    if (get_user_by_id($pdo, $data['user_id'])) {
         return true;
     } else {
         return false;
@@ -71,6 +71,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $stmt = null;
     }
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['_method'] === 'put') {
+    $errors = [];
+
+
+    //Managing the image
+    $thumbnail = '';
+    $file = $_FILES['file'];
+    $fileName = $_FILES['file']['name'];
+    $fileTmpName = $_FILES['file']['tmp_name'];
+    $fileSize = $_FILES['file']['size'];
+    $fileError = $_FILES['file']['error'];
+    $fileType = $_FILES['file']['type'];
+
+    $fileExt = explode('.', $fileName);
+    $fileActualExt = strtolower(end($fileExt));
+    $allowed = array('jpg', 'png', 'jpeg');
+
+
+    if ($fileSize > 0 && !empty($fileName)) {
+        if (in_array($fileActualExt, $allowed)) {
+            if($fileError === 0) {
+                if ($fileSize < 1000000) {
+                    $fileNameNew = uniqid('', true) . "." . $fileActualExt;
+                    $fileDestination = 'uploads/' . $fileNameNew;
+                    $thumbnail = $fileDestination;
+                    move_uploaded_file($fileTmpName, $fileDestination);
+                } else {
+                    $errors['file_too_big'] = 'File is too big!';
+                }   
+            } else {
+                $errors['unexpected_error'] = 'There was a problem in uploading the file!';
+            }
+        } else {
+            $errors['invalid_file_type'] = 'Invalid File Type!';
+        }
+    }
+
     //Gathering data
     $isbn = $_POST['isbn'];
     $title = $_POST['title'];
@@ -94,7 +130,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 
     //Error Handlers
-    $errors = [];
 
     if (is_input_empty($data)) {
         $errors["empty_input"] = "Fill in all fields!";
@@ -106,7 +141,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     if (!is_user_id_number($data)) {
         $errors['invalid_userID'] = 'User ID should be a number';
     }
+    // SAME CURRENT AND SAME BOOK OWNER
     $data['user_id'] = intval($user_id);
+    $book = get_book_by_id($pdo, $data['isbn']);
+    if (!$book) {
+        $errors['invalid_book'] = "Book does not exist!";
+    }
     if (!is_publish_year_number($data)) {
         $errors['invalid_publishYear'] = 'Publish Year should be a number';
     }
@@ -119,18 +159,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $errors['userid_unavailable'] = 'USER_ID does not exist!';
     }
 
-
     if ($errors) {
         $_SESSION["errors_signup"] = $errors;
 
         $_SESSION["signup_data"] = $data;
-
+        die();
         header("Location: /books/{$data['isbn']}");
         die();
     }
 
     //Inserting data into the database
-    update_book($pdo, $data);
+    if (empty($thumbnail)) {
+        update_book($pdo, $data);
+    } else {
+        update_thumbnail($pdo, $data['isbn'], $thumbnail);
+        update_book($pdo, $data);
+    }
 
 
     header("Location: /books/{$data['isbn']}");

@@ -16,10 +16,13 @@
         </div>
 
         <!-- DELETE AND EDIT LINKS -->
-        <form action="/books/<?php echo htmlspecialchars($book['isbn']) ?>" method="post">
-            <input type="hidden" name='_method' value="delete">
-            <button type='submit'>Delete</button>
-        </form>
+        <?php if(isAuthorized($book['user_id'])) {  ?>
+            <form action="/books/<?php echo htmlspecialchars($book['isbn']) ?>" method="post">
+                <input type="hidden" name='_method' value="delete">
+                <button type='submit'>Delete</button>
+            </form>
+            <a href="/books/<?php echo htmlspecialchars($book['isbn']) ?>/edit">EDIT</a>
+        <?php } ?>
         
         <!-- Star Rating Input -->
         <form class="book-content__form" action="/books/<?php echo htmlspecialchars($book['isbn'])?>/reviews" method="post">

@@ -44,7 +44,7 @@ function set_book(object $pdo, array $data) {
 
 
 function update_book(object $pdo, array $data) {
-    $query = "UPDATE books SET title = :title, author = :author, publisher = :publisher, publish_year = :publish_year, synopsis = :synopsis, user_id = :user_id WHERE isbn = :isbn;";
+    $query = "UPDATE books SET title = :title, author = :author, publisher = :publisher, publish_year = :publish_year, synopsis = :synopsis WHERE isbn = :isbn;";
     $stmt = $pdo->prepare($query);
 
     $stmt->bindParam(":isbn", $data['isbn']);
@@ -53,7 +53,16 @@ function update_book(object $pdo, array $data) {
     $stmt->bindParam(":publisher", $data['publisher']);
     $stmt->bindParam(":publish_year", $data['publish_year']);
     $stmt->bindParam(":synopsis", $data['synopsis']);
-    $stmt->bindParam(":user_id", $data['user_id']);
+
+    $stmt->execute();
+}
+
+function update_thumbnail(object $pdo, int $isbn, string $thumbnail) {
+    $query = "UPDATE books SET thumbnail = :thumbnail WHERE isbn = :isbn;";
+    $stmt = $pdo->prepare($query);
+
+    $stmt->bindParam(":isbn", $isbn);
+    $stmt->bindParam(":thumbnail", $thumbnail);
 
     $stmt->execute();
 }
