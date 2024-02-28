@@ -1,20 +1,17 @@
 <?php require 'partials/head.php' ?>
+<?php require 'partials/header.php' ?>
 
-<h3>EDITING REVIEW TO <?php echo htmlspecialchars($book['title']); ?></h3>
+<main class="review-edit">
+    <div class="container">
+        <h3 class="review-edit__title">EDITING REVIEW TO: <span><?php echo htmlspecialchars($book['title']); ?></span> </h3>
+        <form class="review-edit__form" action="/books/<?php echo htmlspecialchars($book['isbn'])?>/reviews/<?php echo htmlspecialchars($review['review_id'])?>" method="post">
+            <input type="hidden" name='_method' value='put'>
+            <input type="number" name='rating' id='rating' max=5 min=1 value=<?php echo $review['rating']; ?>>
+            <textarea name="review_text" id="review_text" placeholder="Review Text"><?php echo htmlspecialchars($review['review_text']); ?></textarea>
+            <input type="hidden" name='user_id' id='user_id' value=<?php echo rand(1,5) ?>>
+            <button class="review-edit__submit" type='submit'>Submit</button>
+        </form>
+    </div>
+</main>
 
-
-<h3>Edit a Review</h3>
-    <form action="/books/<?php echo htmlspecialchars($book['isbn'])?>/reviews/<?php echo htmlspecialchars($review['review_id'])?>" method="post">
-        <input type="hidden" name='_method' value='put'>
-        <input type="number" name='rating' id='rating' max=5 min=1 value=<?php echo $review['rating']; ?>>
-        <br>
-        <textarea name="review_text" id="review_text" cols="30" rows="10" placeholder="Review Text ">
-            <?php echo htmlspecialchars($review['review_text']); ?>
-        </textarea>
-        <br>
-        <input type="hidden" name='user_id' id='user_id' value=<?php echo rand(1,5) ?>>
-        <br>
-        <button type='submt' >Submit</button>
-        <!-- USER ID IS MISSING GOING TO BE RAND FOR NOW -->
-    </form>
 <?php require 'partials/footer.php' ?>

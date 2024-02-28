@@ -5,7 +5,7 @@
   <div class="container">
     <div class="header-wrapper">
       <a href="/">
-        <img src="../public/logo/bookly-logo.png" alt="bookly logo" class="header-nav__image">
+        <img src="/public/logo/bookly-logo.png" alt="bookly logo" class="header-nav__image">
       </a>
       <nav class="header-nav">
         <ul class="header-nav__list">

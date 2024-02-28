@@ -313,6 +313,7 @@ h6 {
 }
 
 .book-content__rating-submit {
+  cursor: pointer;
   background-color: var(--primary-color);
   border: none;
   color: var(--white-color);
@@ -401,6 +402,7 @@ h6 {
 }
 
 .book-review__delete {
+  cursor: pointer;
   appearance: none;
   border: none;
   background-color: #d80032;
@@ -546,4 +548,48 @@ h6 {
   font-size: small;
   color: var(--primary-color);
   text-decoration: none;
+}
+
+/* Review Edit */
+.review-edit {
+  min-height: 80vh;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+}
+
+.review-edit__title {
+  margin-top: 2.5rem;
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+.review-edit__title span {
+  font-weight: 800;
+}
+
+.review-edit__form input,
+.review-edit__form textarea {
+  padding: 0.875rem 1rem;
+  width: 100%;
+  border: 2px solid var(--primary-color);
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.review-edit__form textarea {
+  margin-top: 1rem;
+}
+
+.review-edit__submit {
+  cursor: pointer;
+  margin-top: 1rem;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  padding: 1.25rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  border: none;
 }
