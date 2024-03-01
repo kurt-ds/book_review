@@ -1,10 +1,13 @@
 <?php require 'partials/head.php' ?>
+<?php require 'partials/header.php' ?>
 
-<h3>Edit book data</h3>
+<main class="book-edit">
+    <div class="container">
+    <h3 class="book-edit__title">Edit book data</h3>
 
-<form action="/books/<?php echo htmlspecialchars($book['isbn']); ?>" method='post' enctype='multipart/form-data'>
+    <form class="book-edit__form" action="/books/<?php echo htmlspecialchars($book['isbn']); ?>" method='post' enctype='multipart/form-data'>
         <input type="hidden" name="_method" value="put" />
-        <label for="isbn">ISBN: <?php echo $book['isbn']; ?></label>
+        <label class="book-edit__isbn" for="isbn">ISBN: <?php echo $book['isbn']; ?></label>
         <input type="hidden" name='isbn' value="<?php echo $book['isbn']; ?>">
         <br>
         <input type="text" name='title' placeholder="Title: " value="<?php echo htmlspecialchars($book['title']); ?>">
@@ -21,7 +24,9 @@
         <input type="file" name='file' id='file'>
         <br>
         <!-- THUMBNAIL ARE MISSING -->
-        <button type="submit" >UPDATE</button>
+        <button class="book-edit__submit" type="submit" >UPDATE</button>
     </form>
+    </div>
+</main>
 
 <?php require 'partials/footer.php' ?>

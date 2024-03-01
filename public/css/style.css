@@ -360,6 +360,33 @@ h6 {
   justify-content: start;
 }
 
+.book-content__modifications {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  gap: 0.5rem;
+}
+
+.book-content__delete {
+  cursor: pointer;
+  appearance: none;
+  border: none;
+  background-color: #d80032;
+  color: var(--white-color);
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+
+.book-content__edit {
+  appearance: none;
+  border: none;
+  background-color: #527853;
+  color: var(--white-color);
+  font-size: 1rem;
+  padding: 0.5rem;
+  text-decoration: none;
+}
+
 /* Book review */
 
 .book-review {
@@ -592,4 +619,50 @@ h6 {
   text-transform: uppercase;
   font-weight: 700;
   border: none;
+}
+
+/* Book Edit */
+.book-edit__title {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.book-edit__isbn {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.book-edit__form input,
+.book-edit__form textarea {
+  padding: 0.875rem 1rem;
+  width: 100%;
+  border: 2px solid var(--primary-color);
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+  margin-top: 1rem;
+}
+
+.book-edit__form textarea {
+  margin-top: 1rem;
+}
+
+.book-edit__submit {
+  cursor: pointer;
+  margin-top: 1rem;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  padding: 1.25rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  border: none;
+  width: 100%;
+  margin-bottom: 1.5rem;
 }
