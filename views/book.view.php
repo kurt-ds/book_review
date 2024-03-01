@@ -44,7 +44,7 @@
                 </div>
             </div>
             <textarea class="book-content__rating-text" name="review_text" id="review_text" cols="30" rows="10" placeholder="Review Text"></textarea>
-            <input type="hidden" name='user_id' id='user_id' value="<?php echo $_SESSION['user_id']?>">
+            <input type="hidden" name='user_id' id='user_id' value="<?php if(isset($_SESSION['user_id'])) echo $_SESSION['user_id'];?>">
             <br>
             <button class="book-content__rating-submit" type='submit'>Submit</button>
         </form>
