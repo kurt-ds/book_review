@@ -13,7 +13,7 @@ CREATE TABLE users (
 
 -- USE THIS QUERY TO CREATE BOOKS TABLE
 CREATE TABLE books (
-	isbn INT(13) NOT NULL,
+	isbn BIGINT(13) NOT NULL,
     author VARCHAR(100) NOT NULL,
     title VARCHAR (100) NOT NULL,
     publisher VARCHAR (50) NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE books (
 --USE THIS QUERY TO CREATE REVIEWS TABLE
 CREATE TABLE reviews (
 	review_id INT(11) NOT NULL AUTO_INCREMENT,
-    book_id INT(13),
+    book_id BIGINT(13),
     user_id INT(11),
     rating INT NOT NULL CHECK (rating >= 0 AND rating <= 5),
     review_text TEXT NOT NULL,
