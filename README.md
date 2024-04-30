@@ -16,8 +16,3 @@ This is a full-stack website about reviewing books.
 - Create 5 users using the signup page
 - Go to localhost/seed to input books into the database
 - Test the website and its functionalities.
-
-
-
-made some changes 
-made some changes
